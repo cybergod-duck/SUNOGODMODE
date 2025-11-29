@@ -60,3 +60,23 @@ body::before {
   .title-glow {font-size:3.5rem;}
   .video-wrapper iframe {height:280px;}
 }
+.official-download {
+  text-align:center;
+  margin:2rem 0 1rem;
+  font-size:1.8rem;
+  font-weight:900;
+}
+.official-download a {
+  color:#ff00aa;
+  text-shadow:0 0 30px #ff00aa;
+  text-decoration:none;
+  animation:gentleglow 4s infinite;
+}
+.edition-glow {
+  text-align:center;
+  font-size:1.4rem;
+  color:#ff00aa;
+  text-shadow:0 0 20px #ff00aa;
+  letter-spacing:4px;
+  margin-bottom:2rem;
+}
