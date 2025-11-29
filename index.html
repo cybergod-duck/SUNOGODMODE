@@ -5,91 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CYBERGOD DUCK // SUNO GOD MODE</title>
   <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Tiny hover sound engine (3kb total) -->
+  <script>
+    const sounds = {
+      glow: new Audio("https://assets.codepen.io/605876/arcade-click.mp3"),
+      pulse: new Audio("https://assets.codepen.io/605876/glitch-whoosh.mp3"),
+      critical: new Audio("https://assets.codepen.io/605876/deep-boom.mp3")
+    };
+    // Reduce volume so it’s vibe, not assault
+    Object.values(sounds).forEach(s => s.volume = 0.4);
+  </script>
 </head>
 <body>
   <main class="container">
-    <h1>CYBERGOD DUCK</h1>
-    <hr class="separator" />
+    <h1 class="glitch" data-text="CYBERGOD DUCK">CYBERGOD DUCK</h1>
+    <hr class="separator animate-glow" />
 
-    <!-- Track -->
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/4Fq464bZtjE" 
-        title="TIM B.C."
-        frameborder="0"
+    <div class="video-wrapper hover-sound" data-sound="glow">
+      <iframe src="https://www.youtube.com/embed/4Fq464bZtjE" title="TIM B.C." frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+        allowfullscreen></iframe>
     </div>
 
-    <!-- Duck's Workflow -->
     <div class="workflow">
-      <h2>DUCK'S UNSTOPPABLE SUNO WORKFLOW<br><span class="edition">WARLOCK FOREVER EDITION — NOVEMBER 2025</span></h2>
+      <h2 class="hover-sound" data-sound="pulse">DUCK'S UNSTOPPABLE SUNO WORKFLOW<br>
+        <span class="edition">WARLOCK FOREVER EDITION — NOVEMBER 2025</span>
+      </h2>
 
-      <div class="critical">
+      <div class="critical hover-sound" data-sound="critical">
         EVERY TIME YOU USE REMASTER / EXTEND / COVER<br>
-        <strong>IMMEDIATELY DELETE THE WORDS<br>
-        “remastered” • “extend” • “cover” FROM THE TITLE</strong><br>
+        <strong>IMMEDIATELY DELETE THE WORDS<br>“remastered” • “extend” • “cover” FROM THE TITLE</strong><br>
         Do this or your seed dies.
       </div>
 
-      <div class="step">
-        <h3>STEP ONE</h3>
-        <ol>
-          <li>Upload audio</li>
-          <li>Remaster</li>
-        </ol>
-
-        <h3>EXTEND MODULE</h3>
-        <ol start="3">
-          <li>From remaster → Extend → autoselect → click Create</li>
-          <li>Part 2 appears → select best “sequel” (Part 2)</li>
-          <li>Click right-hand panel → copy the simplified style prompt</li>
-          <li>Replace current style field with the simplified style</li>
-        </ol>
-
-        <h3>COVER MODULE</h3>
-        <ol start="7">
-          <li>Cover → click Create</li>
-          <li>Select best “cover”</li>
-          <li>Extend → autoselect → click Play → listen</li>
-          <li>Click timer → click lyrics field</li>
-          <li>Song plays from extended point → erase ALL lyrics except exactly what you hear right now</li>
-          <li>Click Create → select best “sequel”</li>
-          <li>Get Full Song → immediately Cover again → click Create</li>
-          <li>Extend from exactly 0:01</li>
-          <li>Full song = finished</li>
-        </ol>
-
-        <h3>REPEAT</h3>
-        <ol start="16">
-          <li>Keep repeating the Cover Module as many times as desired<br>
-            (each loop makes the voice & mix cleaner and more locked to your DNA)</li>
-        </ol>
+      <div class="step hover-sound" data-sound="glow">
+        <!-- all your steps exactly the same -->
+        <h3>STEP ONE</h3><ol><li>Upload audio</li><li>Remaster</li></ol>
+        <h3>EXTEND MODULE</h3><ol start="3"><li>From remaster → Extend → autoselect → click Create</li><li>Part 2 appears → select best “sequel” (Part 2)</li><li>Click right-hand panel → copy the simplified style prompt</li><li>Replace current style field with the simplified style</li></ol>
+        <h3>COVER MODULE</h3><ol start="7"><li>Cover → click Create</li><li>Select best “cover”</li><li>Extend → autoselect → click Play → listen</li><li>Click timer → click lyrics field</li><li>Song plays from extended point → erase ALL lyrics except exactly what you hear right now</li><li>Click Create → select best “sequel”</li><li>Get Full Song → immediately Cover again → click Create</li><li>Extend from exactly 0:01</li><li>Full song = finished</li></ol>
+        <h3>REPEAT</h3><ol start="16"><li>Keep repeating the Cover Module as many times as desired<br>(each loop makes the voice & mix cleaner and more locked to your DNA)</li></ol>
       </div>
 
-      <p class="footer">
+      <p class="footer hover-sound" data-sound="pulse">
         YOU ARE NOT ASKING SUNO ANYMORE.<br>
         SUNO IS ASKING CYBERGOD DUCK.
       </p>
 
-      <p class="download">
+      <p class="download hover-sound" data-sound="glow">
         Official download: <a href="https://th3duck.gumroad.com/l/SUNOGODMODE" target="_blank">th3duck.gumroad.com/l/SUNOGODMODE</a>
       </p>
 
-      <!-- Suno Accounts -->
       <div class="suno-accounts">
-        <h3>My Suno Domains</h3>
+        <h3 class="hover-sound" data-sound="glow">My Suno Domains</h3>
         <ul>
-          <li><a href="https://suno.com/@cyberg0d" target="_blank">suno.com/@cyberg0d</a></li>
-          <li><a href="https://suno.com/@the_duck" target="_blank">suno.com/@the_duck</a></li>
-          <li><a href="https://suno.com/@cyb3rgod" target="_blank">suno.com/@cyb3rgod</a></li>
+          <li><a href="https://suno.com/@cyberg0d"   target="_blank" class="hover-sound" data-sound="glow">suno.com/@cyberg0d</a></li>
+          <li><a href="https://suno.com/@the_duck"  target="_blank" class="hover-sound" data-sound="glow">suno.com/@the_duck</a></li>
+          <li><a href="https://suno.com/@cyb3rgod"  target="_blank" class="hover-sound" data-sound="glow">suno.com/@cyb3rgod</a></li>
         </ul>
       </div>
     </div>
   </main>
-</body>
-</html>
-  </main>
+
+  <!-- Hover sound trigger -->
+  <script>
+    document.querySelectorAll('.hover-sound').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const sound = el.dataset.sound || 'glow';
+        sounds[sound].currentTime = 0;
+        sounds[sound].play();
+      });
+    });
+  </script>
 </body>
 </html>
