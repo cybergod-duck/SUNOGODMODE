@@ -1,82 +1,41 @@
-body {
-  margin:0; padding:0; min-height:100vh;
-  background:#000;
-  background:linear-gradient(135deg,#000,#1a0033);
-  font-family:'Roboto Mono', monospace;
-  color:#0ff;
-  position:relative;
-  overflow-x:hidden;
-}
+body{margin:0;padding:0;min-height:100vh;background:#000;background:linear-gradient(135deg,#000,#1a0033);font-family:'Roboto Mono',monospace;color:#0ff;position:relative;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23000"/><rect x="0" y="0" width="1" height="1" fill="%2300ffea20"/><rect x="2" y="2" width="1" height="1" fill="%23ff00aa20"/></svg>') repeat;pointer-events:none;opacity:0.08;animation:noise 8s steps(10) infinite}
+@keyframes noise{from{transform:translate(0,0)}to{transform:translate(4px,4px)}}
 
-/* Subtle animated noise overlay */
-body::before {
-  content:""; position:fixed; inset:0;
-  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23000"/><rect x="0" y="0" width="1" height="1" fill="%2300ffea20"/><rect x="2" y="2" width="1" height="1" fill="%23ff00aa20"/></svg>') repeat;
-  pointer-events:none; opacity:0.08;
-  animation:noise 8s steps(10) infinite;
-}
-@keyframes noise {from{transform:translate(0,0)} to{transform:translate(4px,4px)}}
+.container{max-width:960px;margin:2rem auto;padding:3rem;background:rgba(10,0,30,0.95);border:3px solid #0ff;border-radius:20px;box-shadow:0 0 60px rgba(0,255,255,0.4)}
 
-.container {
-  max-width:960px; margin:2rem auto; padding:3rem;
-  background:rgba(10,0,30,0.95);
-  border:3px solid #0ff; border-radius:20px;
-  box-shadow:0 0 60px rgba(0,255,255,0.4);
-}
+.title-glow{font-family:'Orbitron',Impact,sans-serif;font-size:6rem;text-align:center;color:#f0f;text-shadow:0 0 30px #f0f;animation:gentleglow 5s infinite}
+@keyframes gentleglow{0%,100%{text-shadow:0 0 30px #f0f}50%{text-shadow:0 0 50px #f0f,0 0 80px #f0f}}
 
-/* Breathing title */
-.title-glow {
-  font-family:'Orbitron', Impact, sans-serif;
-  font-size:6rem; text-align:center; color:#f0f;
-  text-shadow:0 0 30px #f0f;
-  animation:gentleglow 5s infinite;
-}
-@keyframes gentleglow {
-  0%,100%{text-shadow:0 0 30px #f0f}
-  50%{text-shadow:0 0 50px #f0f, 0 0 80px #f0f}
-}
+.separator{width:160px;height:2px;background:#0ff;margin:4rem auto;box-shadow:0 0 20px #0ff}
 
-.separator {
-  width:160px; height:2px; background:#0ff;
-  margin:4rem auto; box-shadow:0 0 20px #0ff;
-}
+.video-wrapper{max-width:840px;margin:0 auto 2rem;border-radius:16px;overflow:hidden;box-shadow:0 20px 40px rgba(0,255,255,0.3);transition:all .5s}
+.video-wrapper:hover{box-shadow:0 20px 60px rgba(255,0,255,0.6)}
+.video-wrapper iframe{width:100%;height:480px;border:none}
 
-/* Video stays perfectly sized */
-.video-wrapper {
-  max-width:840px; margin:0 auto 5rem;
-  border-radius:16px; overflow:hidden;
-  box-shadow:0 20px 40px rgba(0,255,255,0.3);
-  transition:all 0.5s;
-}
-.video-wrapper:hover {box-shadow:0 20px 60px rgba(255,0,255,0.6);}
-.video-wrapper iframe {
-  width:100%; height:480px; border:none;
-}
+.download-under-video{text-align:center;margin:2rem 0 1.5rem;font-size:2.2rem;font-weight:900}
+.download-under-video a{color:#ff00aa;text-shadow:0 0 30px #ff00aa;text-decoration:none;animation:gentleglow 4s infinite}
 
-/* Keep all your original Duck styling below — just paste the rest of your previous CSS here */
-/* (critical, step, footer, suno-accounts, etc. — unchanged) */
+.edition-glow{text-align:center;font-size:1.6rem;color:#ff00aa;text-shadow:0 0 25px #ff00aa;letter-spacing:6px;margin:0 0 3rem}
 
-@media (max-width:640px) {
-  .title-glow {font-size:3.5rem;}
-  .video-wrapper iframe {height:280px;}
-}
-.official-download {
-  text-align:center;
-  margin:2rem 0 1rem;
-  font-size:1.8rem;
-  font-weight:900;
-}
-.official-download a {
-  color:#ff00aa;
-  text-shadow:0 0 30px #ff00aa;
-  text-decoration:none;
-  animation:gentleglow 4s infinite;
-}
-.edition-glow {
-  text-align:center;
-  font-size:1.4rem;
-  color:#ff00aa;
-  text-shadow:0 0 20px #ff00aa;
-  letter-spacing:4px;
-  margin-bottom:2rem;
+.workflow h2,.step h3,.critical,.footer,.suno-accounts h3{color:#f0f;text-shadow:0 0 15px #f0f}
+.critical{background:#f0f;color:#000;padding:25px;margin:3rem 0;border-radius:15px;font-weight:900;font-size:1.4rem;box-shadow:0 0 50px #f0f;animation:pulse 3s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 50px #f0f}50%{box-shadow:0 0 80px #f0f}}
+
+.step{background:rgba(0,255,234,0.15);padding:40px;margin:3rem 0;border-left:10px solid #f0f;border-radius:0 15px 15px 0;text-align:left}
+.step ol{padding-left:70px;font-size:1.3rem;line-height:2.2;counter-reset:item}
+.step li{position:relative;margin:20px 0;color:#0ff}
+.step li:before{content:counter(item);counter-increment:item;position:absolute;left:-70px;top:-8px;background:#f0f;color:#000;width:54px;height:54px;border-radius:50%;line-height:54px;font-weight:900;font-size:1.5rem;box-shadow:0 0 25px #f0f}
+
+.footer{font-size:2.4rem;color:#f0f;text-shadow:0 0 25px #f0f;margin:5rem 0 3rem;text-align:center}
+
+.suno-accounts{margin-top:4rem;text-align:center}
+.suno-accounts h3{color:#f0f;font-size:1.6rem;text-shadow:0 0 15px #f0f;margin-bottom:1.5rem}
+.suno-accounts a{color:#0ff;text-decoration:none;font-size:1.2rem;border-bottom:1px solid rgba(0,255,255,0.3);transition:all .3s}
+.suno-accounts a:hover{color:#f0f;text-shadow:0 0 10px #f0f;border-bottom-color:#f0f}
+
+@media(max-width:640px){
+  .title-glow{font-size:3.5rem}
+  .video-wrapper iframe{height:280px}
+  .download-under-video{font-size:1.6rem}
 }
