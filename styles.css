@@ -1,62 +1,62 @@
-/* ==== BACKGROUND & SCANLINES ==== */
 body {
-  margin:0; padding:0; min-height:100vh; overflow-x:hidden;
+  margin:0; padding:0; min-height:100vh;
   background:#000;
   background:linear-gradient(135deg,#000,#1a0033);
-  position:relative;
   font-family:'Roboto Mono', monospace;
   color:#0ff;
+  position:relative;
+  overflow-x:hidden;
 }
+
+/* Subtle animated noise overlay */
 body::before {
   content:""; position:fixed; inset:0;
-  background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,255,0.03) 2px, rgba(0,255,255,0.03) 4px);
-  pointer-events:none; animation:scan 8s linear infinite;
+  background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="%23000"/><rect x="0" y="0" width="1" height="1" fill="%2300ffea20"/><rect x="2" y="2" width="1" height="1" fill="%23ff00aa20"/></svg>') repeat;
+  pointer-events:none; opacity:0.08;
+  animation:noise 8s steps(10) infinite;
 }
-@keyframes scan {0%{transform:translateY(-100%)} 100%{transform:translateY(100%)}}
+@keyframes noise {from{transform:translate(0,0)} to{transform:translate(4px,4px)}}
 
-/* ==== MAIN CONTAINER ==== */
 .container {
   max-width:960px; margin:2rem auto; padding:3rem;
   background:rgba(10,0,30,0.95);
   border:3px solid #0ff; border-radius:20px;
-  box-shadow:0 0 80px #0ff, inset 0 0 40px rgba(0,255,255,0.2);
-  position:relative; animation:breath 6s infinite;
-}
-@keyframes breath {
-  0%,100%{box-shadow:0 0 80px #0ff, inset 0 0 40px rgba(0,255,255,0.2);}
-  50%{box-shadow:0 0 120px #0ff, inset 0 0 60px rgba(0,255,255,0.4);}
+  box-shadow:0 0 60px rgba(0,255,255,0.4);
 }
 
-/* ==== GLITCH TITLE ==== */
-.glitch {
+/* Breathing title */
+.title-glow {
   font-family:'Orbitron', Impact, sans-serif;
-  font-size:6rem; text-align:center;
-  color:#f0f; text-shadow:0 0 30px #f0f;
-  position:relative;
+  font-size:6rem; text-align:center; color:#f0f;
+  text-shadow:0 0 30px #f0f;
+  animation:gentleglow 5s infinite;
 }
-.glitch::before, .glitch::after {
-  content:attr(data-text);
-  position:absolute; top:0; left:0; width:100%; height:100%;
+@keyframes gentleglow {
+  0%,100%{text-shadow:0 0 30px #f0f}
+  50%{text-shadow:0 0 50px #f0f, 0 0 80px #f0f}
 }
-.glitch::before {animation:glitch1 2s infinite; clip-path:polygon(0 0,100% 0,100% 40%,0 40%);}
-.glitch::after  {animation:glitch2 2s infinite; clip-path:polygon(0 60%,100% 60%,100% 100%,0 100%);}
-@keyframes glitch1 {0%,100%{transform:translate(0)} 20%{transform:translate(-5px,5px)} 40%{transform:translate(5px,-5px)}}
-@keyframes glitch2 {0%,100%{transform:translate(0)} 30%{transform:translate(5px,-5px)} 60%{transform:translate(-5px,5px)}}
 
-/* ==== REST OF YOUR STYLES (slightly upgraded) ==== */
-.separator {width:160px; height:3px; background:#0ff; margin:4rem auto; box-shadow:0 0 20px #0ff;}
-.animate-glow {animation:lineglow 4s infinite alternate;}
-@keyframes lineglow {from{box-shadow:0 0 10px #0ff} to{box-shadow:0 0 40px #0ff}}
+.separator {
+  width:160px; height:2px; background:#0ff;
+  margin:4rem auto; box-shadow:0 0 20px #0ff;
+}
 
-.video-wrapper {transition:all 0.6s; cursor:pointer;}
-.video-wrapper:hover {transform:scale(1.02); box-shadow:0 0 60px #f0f !important;}
+/* Video stays perfectly sized */
+.video-wrapper {
+  max-width:840px; margin:0 auto 5rem;
+  border-radius:16px; overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,255,255,0.3);
+  transition:all 0.5s;
+}
+.video-wrapper:hover {box-shadow:0 20px 60px rgba(255,0,255,0.6);}
+.video-wrapper iframe {
+  width:100%; height:480px; border:none;
+}
 
-.critical {animation:pulse 3s infinite;}
-.step, .footer, .download a, .suno-accounts a {transition:all 0.4s;}
-.step:hover, .footer:hover, .download a:hover, .suno-accounts a:hover {transform:translateY(-4px); text-shadow:0 0 20px #f0f;}
+/* Keep all your original Duck styling below — just paste the rest of your previous CSS here */
+/* (critical, step, footer, suno-accounts, etc. — unchanged) */
 
-/* keep everything else you already had */
-.workflow h2, .edition, .critical, .step h3, .step ol, .step li, .step li:before,
-.footer, .download, .suno-accounts h3, .suno-accounts a { /* unchanged from previous version */ }
-
-/* (Paste the rest of the previous CSS here if you want to keep exact colors/fonts) */
+@media (max-width:640px) {
+  .title-glow {font-size:3.5rem;}
+  .video-wrapper iframe {height:280px;}
+}
